@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID GALLERY</title>
+    <link rel="icon" type="image/png" href="./android-chrome-192x192.png">
+    <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+   
+</head>
+<body>
+   <div id="navbar-container"></div>
+   
+    <div class="h1">
+        <h1>GRID GALLERY</h1>
+        <div class="start-div">
+           <span>NONOGRAM</span>
+            <a class="start-btn" href="puzzle.html">start playing</a>
+        </div>
+        
+    </div>
+
+    
+        <div id="bg-div">
+            <svg id="visual" viewBox="0 0 960 540" width="960" height="540" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><g transform="translate(441.2538010560427 263.87676747739954)"><path id="blob1" d="M109.1 -96.3C154.1 -64.1 212.1 -32.1 224.8 12.7C237.5 57.5 205 115 160 145.9C115 176.7 57.5 180.8 0.1 180.7C-57.3 180.6 -114.6 176.2 -137.1 145.4C-159.6 114.6 -147.3 57.3 -141.2 6.1C-135 -45 -135 -90 -112.5 -122.2C-90 -154.4 -45 -173.7 -6.5 -167.2C32.1 -160.7 64.1 -128.4 109.1 -96.3" fill="#BB004B"></path></g>
+                <g transform="translate(508.91550020692966 230.02484037951575) " style="visibility: hidden;"><path id="blob2" d="M106.7 -96C139.9 -73.5 169.4 -36.8 167.2 -2.2C165 32.3 130.9 64.6 97.7 105.4C64.6 146.2 32.3 195.6 -9.5 205.2C-51.4 214.7 -102.8 184.4 -147.8 143.6C-192.8 102.8 -231.4 51.4 -224.3 7.1C-217.2 -37.2 -164.5 -74.5 -119.5 -97C-74.5 -119.5 -37.2 -127.2 -0.2 -127C36.8 -126.8 73.5 -118.5 106.7 -96" fill="#BB004B"></path></g>
+            
+            </svg>
+        </div>
+    
+
+ 
+   
+
+  
+
+
+    <script>
+        const tween = KUTE.fromTo(
+    '#blob1',
+    {path:'#blob1'},
+    {path: '#blob2'},
+    {repeat: 999, duration: 8000, yoyo:true}
+
+    
+)
+tween.start();
+        
+    </script>
+
+    <script src="./script.js"></script>
+</body>
+</html> 
