@@ -1,31 +1,4 @@
-/* HOME PAGE / index.html */ 
-body{
-    background-color: #FF0066;
-    font-family: 'Encode Sans', sans-serif;
-    
-   
-}
-#bg-div{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* Make it cover the entire width of the viewport */
-    height: 100%; /* Make it cover the entire height of the viewport */
-    z-index: -1; 
-}
-
-.h1{
-   padding: 10%;
-}
-
-.start-btn{
-    color: white;
-    font-size: 1.5rem;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration:underline black 0.7rem;
-}
-
-/* nav-bar */
+/* common nav-bar */
 #navbar-container {
     position: fixed;
     top: 0;
@@ -37,10 +10,11 @@ body{
     display: flex;
     justify-content: space-between; /* Align elements to the left and right */
     align-items: center;
+   
 }
 
 /* Style for the home icon on the left */
-.home-icon {
+.home-icon , .rules {
     color: #fff;
     text-decoration: none;
     margin-right: 20px; /* Add spacing between home icon and other icons */
@@ -61,31 +35,4 @@ body{
 /* Change color of links on hover (optional) */
 .right-icons a:hover, .home-icon:hover {
     color: #00f; /* Change to your desired hover color */
-}
-
-/* Style the nonogram grid */
-.nonogram {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    max-width: 300px;
-    margin: 10rem auto;
-  
-}
-
-.cell {
-    
-    width: 40px;
-    height: 40px;
-    background-color: #eee;
-    border: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.cell.filled {
-    background-color: #000;
-    color: #fff;
 }

@@ -1,17 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle</title>
-    <link rel="icon" type="image/png" href="./android-chrome-192x192.png">
+    <title>Dummy puzzle</title>
     <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200&family=Orbitron:wght@400;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
+
 <body>
     <div id="navbar-container"></div>
-    <div class="nonogram">
-        <!-- The game grid goes here -->
+
+    <div class="container-box">
+        <div id="grid-container"></div>
     </div>
+    <div class="heart-container">
+        <div id="hearts"></div>
+    </div>
+    <div class="tryAgain-div">
+        <button class="tryAgain-btn tryAgain-btn-remove">Try Again</button>
+
+    </div>
+
+
+
+    <style>
+        body {
+            background-color: #141E46;
+            font-family: 'Encode Sans', sans-serif;
+        }
+
+        .container-box {
+            text-align: center;
+            margin-top: 70px;
+
+        }
+
+        .grid {
+            margin: 0;
+            padding: 0;
+            border: 0.5px solid grey;
+            display: inline-block;
+        }
+
+        .heart-container {
+            text-align: center;
+        }
+
+        .tryAgain-div {
+            text-align: center;
+        }
+
+        .tryAgain-btn {
+            padding: 5px;
+            font-weight: bolder;
+
+        }
+
+        .tryAgain-btn-remove {
+            visibility: hidden;
+        }
+    </style>
+
+    <script>
+
+
+        // function that creates grids in the grid-container
+        function createGrid(x) {
+            for (let col = 0; col < x; col++) {
+                for (let row = 0; row < x; row++) {
+                    let gridId = "grid-" + row + "-" + col;
+                    let gridIdDiv = "<div class='grid' id='" + gridId + "'></div>";
+                    $("#grid-container").append(gridIdDiv);
+                    $("#" + gridId).width("60px");
+                    $("#" + gridId).height("60px");
+
+                }
+                $("#grid-container").append("</br>")
+
+            }
+        }
+
+        // lives of the game 
+        createGrid(5);
+        const hearts = ['💗', '💗', '💗'];
+        $('#hearts').append(hearts);
+
+        // Function to update the hearts display
+        function updateHeartsDisplay() {
+            $('#hearts').empty(); // Clear the existing hearts
+            $('#hearts').append(hearts); // Append the remaining hearts
+        }
+
+        /* To target a specific grid element by its id
+let specificGrid = $('#grid-2-3'); // Replace 'grid-2-3' with the id of the grid you want to target
+specificGrid.css('background-color', 'blue'); // Change the background color to blue as an example
+*/
+
+
+
+
+        // Define a mapping of grid IDs to their respective colors
+        const correctGrids = {
+            'grid-1-0': '#ff007f',
+            'grid-1-1': '#B90A4A',
+            'grid-2-0': 'pink',
+            'grid-2-1': '#cc0066',
+            'grid-3-0': '#B90A4A',
+            'grid-3-1': '#CC0066',
+            'grid-2-2': 'green',
+            'grid-2-3': 'green',
+            'grid-2-4': 'green',
+            'grid-1-3': '#003319',
+            'grid-0-2': '#074e30',
+            'grid-3-3': '#006600',
+            'grid-4-2': '#006600'
+        };
+        // Define the IDs of the grids you want to set to black
+        const incorrectGrids = [
+            'grid-0-0', 'grid-0-1', 'grid-0-2', 'grid-0-3', 'grid-0-4',
+            'grid-1-2', 'grid-1-4',
+            'grid-2-4',
+            'grid-3-2', 'grid-3-4',
+            'grid-4-0', 'grid-4-1', 'grid-4-3', 'grid-4-4'
+        ];
+
+        //audios
+        let rightAns = new Audio('rightAnswer.mp3');
+        let wrongAns = new Audio('wrongAsnwer.mp3');
+
+        // Add a click event handler for all grid elements to Check the answers
+        $('.grid').on('click', function () {
+            const gridId = $(this).attr('id');
+            if (correctGrids.hasOwnProperty(gridId)) {
+                const color = correctGrids[gridId];
+                $(this).css('background-color', color);
+                rightAns.play();
+
+            } else if (incorrectGrids.includes(gridId)) {
+                $(this).css('background-color', 'black');
+                if (hearts.length > 0) {
+                    hearts.pop();
+                    updateHeartsDisplay();
+                    wrongAns.play()
+                }
+                if (hearts.length === 0) {
+                    $('.grid').off('click');
+                    $('.tryAgain-btn').removeClass('tryAgain-btn-remove')
+                }
+            }
+        });
+
+        $('.tryAgain-btn').on('click', function () {
+            $(location.reload());
+        })
+    </script>
     <script src="./script.js"></script>
 </body>
+
 </html>
